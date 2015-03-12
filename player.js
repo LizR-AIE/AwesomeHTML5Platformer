@@ -1,11 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var Player = function()
 {
 	this.image = document.createElement("img");
-	this.x = canvas.width/2;
-	this.y = canvas.height/2;
-	this.width = 159;
-	this.height = 163;
 	
+	// A Vector2 that represents the Players x and y
+	this.position = new Vector2();
+	this.startPosition = new Vector2();
+	
+	this.startPosition.set(canvas.width/2, canvas.height/2);
+	this.position = this.startPosition; 
+	
+	// A Vector2 that represents the Players width and height
+	this.size = new Vector2();
+	this.size.set(159, 163);
+		
 	this.image.src = "hero.png";
 };
 
@@ -31,9 +53,20 @@ Player.prototype.draw = function()
 {
 	context.save();
 	
-	context.translate(this.x, this.y);
+	context.translate(this.position.x, this.position.y);
 	context.rotate(this.rotation);
-	context.drawImage(this.image, -this.width/2, -this.height/2);
+	context.drawImage(this.image, -this.size.x/2, -this.size.y/2);
 	
 	context.restore();
 }
+
+
+
+
+
+
+
+
+
+
+

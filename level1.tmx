@@ -1,497 +1,913 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="15" tilewidth="70" tileheight="70" nextobjectid="3">
- <tileset firstgid="1" name="Enemies" tilewidth="75" tileheight="146">
-  <tile id="0">
-   <image width="51" height="51" source="../../../Desktop/Kenney.nl/Base pack/Enemies/blockerBody.png"/>
-  </tile>
-  <tile id="1">
-   <image width="51" height="51" source="../../../Desktop/Kenney.nl/Base pack/Enemies/blockerMad.png"/>
-  </tile>
-  <tile id="2">
-   <image width="51" height="51" source="../../../Desktop/Kenney.nl/Base pack/Enemies/blockerSad.png"/>
-  </tile>
-  <tile id="3">
-   <image width="66" height="42" source="../../../Desktop/Kenney.nl/Base pack/Enemies/fishDead.png"/>
-  </tile>
-  <tile id="4">
-   <image width="66" height="42" source="../../../Desktop/Kenney.nl/Base pack/Enemies/fishSwim1.png"/>
-   <animation>
-    <frame tileid="4" duration="100"/>
-    <frame tileid="5" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="5">
-   <image width="62" height="43" source="../../../Desktop/Kenney.nl/Base pack/Enemies/fishSwim2.png"/>
-  </tile>
-  <tile id="6">
-   <image width="59" height="33" source="../../../Desktop/Kenney.nl/Base pack/Enemies/flyDead.png"/>
-  </tile>
-  <tile id="7">
-   <image width="72" height="36" source="../../../Desktop/Kenney.nl/Base pack/Enemies/flyFly1.png"/>
-   <animation>
-    <frame tileid="7" duration="100"/>
-    <frame tileid="8" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="8">
-   <image width="75" height="31" source="../../../Desktop/Kenney.nl/Base pack/Enemies/flyFly2.png"/>
-  </tile>
-  <tile id="9">
-   <image width="48" height="146" source="../../../Desktop/Kenney.nl/Base pack/Enemies/pokerMad.png"/>
-  </tile>
-  <tile id="10">
-   <image width="48" height="146" source="../../../Desktop/Kenney.nl/Base pack/Enemies/pokerSad.png"/>
-  </tile>
-  <tile id="11">
-   <image width="59" height="12" source="../../../Desktop/Kenney.nl/Base pack/Enemies/slimeDead.png"/>
-  </tile>
-  <tile id="12">
-   <image width="50" height="28" source="../../../Desktop/Kenney.nl/Base pack/Enemies/slimeWalk1.png"/>
-   <animation>
-    <frame tileid="12" duration="100"/>
-    <frame tileid="13" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="13">
-   <image width="51" height="26" source="../../../Desktop/Kenney.nl/Base pack/Enemies/slimeWalk2.png"/>
-  </tile>
-  <tile id="14">
-   <image width="44" height="30" source="../../../Desktop/Kenney.nl/Base pack/Enemies/snailShell.png"/>
-  </tile>
-  <tile id="15">
-   <image width="44" height="30" source="../../../Desktop/Kenney.nl/Base pack/Enemies/snailShell_upsidedown.png"/>
-  </tile>
-  <tile id="16">
-   <image width="54" height="31" source="../../../Desktop/Kenney.nl/Base pack/Enemies/snailWalk1.png"/>
-   <animation>
-    <frame tileid="16" duration="100"/>
-    <frame tileid="17" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="17">
-   <image width="57" height="31" source="../../../Desktop/Kenney.nl/Base pack/Enemies/snailWalk2.png"/>
-  </tile>
+ <tileset firstgid="1" name="tileset" tilewidth="70" tileheight="70" spacing="2" margin="2">
+  <image source="tileset.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="19" name="Items" tilewidth="129" tileheight="71">
-  <tile id="0">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/bomb.png"/>
-  </tile>
-  <tile id="1">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/bombFlash.png"/>
-  </tile>
-  <tile id="2">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/bush.png"/>
-  </tile>
-  <tile id="3">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonBlue.png"/>
-  </tile>
-  <tile id="4">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonBlue_pressed.png"/>
-  </tile>
-  <tile id="5">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonGreen.png"/>
-  </tile>
-  <tile id="6">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonGreen_pressed.png"/>
-  </tile>
-  <tile id="7">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonRed.png"/>
-  </tile>
-  <tile id="8">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonRed_pressed.png"/>
-  </tile>
-  <tile id="9">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonYellow.png"/>
-  </tile>
-  <tile id="10">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/buttonYellow_pressed.png"/>
-  </tile>
-  <tile id="11">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/cactus.png"/>
-  </tile>
-  <tile id="12">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/chain.png"/>
-  </tile>
-  <tile id="13">
-   <image width="128" height="71" source="../../../Desktop/Kenney.nl/Base pack/Items/cloud1.png"/>
-  </tile>
-  <tile id="14">
-   <image width="129" height="71" source="../../../Desktop/Kenney.nl/Base pack/Items/cloud2.png"/>
-  </tile>
-  <tile id="15">
-   <image width="129" height="71" source="../../../Desktop/Kenney.nl/Base pack/Items/cloud3.png"/>
-  </tile>
-  <tile id="16">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/coinBronze.png"/>
-  </tile>
-  <tile id="17">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/coinGold.png"/>
-  </tile>
-  <tile id="18">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/coinSilver.png"/>
-  </tile>
-  <tile id="19">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/fireball.png"/>
-  </tile>
-  <tile id="20">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagBlue.png"/>
-   <animation>
-    <frame tileid="20" duration="100"/>
-    <frame tileid="21" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="21">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagBlue2.png"/>
-  </tile>
-  <tile id="22">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagBlueHanging.png"/>
-  </tile>
-  <tile id="23">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagGreen.png"/>
-   <animation>
-    <frame tileid="23" duration="100"/>
-    <frame tileid="24" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="24">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagGreen2.png"/>
-  </tile>
-  <tile id="25">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagGreenHanging.png"/>
-  </tile>
-  <tile id="26">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagRed.png"/>
-   <animation>
-    <frame tileid="26" duration="100"/>
-    <frame tileid="27" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="27">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagRed2.png"/>
-  </tile>
-  <tile id="28">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagRedHanging.png"/>
-  </tile>
-  <tile id="29">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagYellow.png"/>
-   <animation>
-    <frame tileid="29" duration="100"/>
-    <frame tileid="30" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="30">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagYellow2.png"/>
-  </tile>
-  <tile id="31">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/flagYellowHanging.png"/>
-  </tile>
-  <tile id="32">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/gemBlue.png"/>
-  </tile>
-  <tile id="33">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/gemGreen.png"/>
-  </tile>
-  <tile id="34">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/gemRed.png"/>
-  </tile>
-  <tile id="35">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/gemYellow.png"/>
-  </tile>
-  <tile id="36">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/keyBlue.png"/>
-  </tile>
-  <tile id="37">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/keyGreen.png"/>
-  </tile>
-  <tile id="38">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/keyRed.png"/>
-  </tile>
-  <tile id="39">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/keyYellow.png"/>
-  </tile>
-  <tile id="40">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/mushroomBrown.png"/>
-  </tile>
-  <tile id="41">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/mushroomRed.png"/>
-  </tile>
-  <tile id="42">
-   <image width="19" height="14" source="../../../Desktop/Kenney.nl/Base pack/Items/particleBrick1a.png"/>
-  </tile>
-  <tile id="43">
-   <image width="21" height="21" source="../../../Desktop/Kenney.nl/Base pack/Items/particleBrick1b.png"/>
-  </tile>
-  <tile id="44">
-   <image width="19" height="14" source="../../../Desktop/Kenney.nl/Base pack/Items/particleBrick2a.png"/>
-  </tile>
-  <tile id="45">
-   <image width="21" height="21" source="../../../Desktop/Kenney.nl/Base pack/Items/particleBrick2b.png"/>
-  </tile>
-  <tile id="46">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/plant.png"/>
-  </tile>
-  <tile id="47">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/plantPurple.png"/>
-  </tile>
-  <tile id="48">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/rock.png"/>
-  </tile>
-  <tile id="49">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/snowhill.png"/>
-  </tile>
-  <tile id="50">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/spikes.png"/>
-  </tile>
-  <tile id="51">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/springboardDown.png"/>
-  </tile>
-  <tile id="52">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/springboardUp.png"/>
-  </tile>
-  <tile id="53">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/star.png"/>
-  </tile>
-  <tile id="54">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/switchLeft.png"/>
-  </tile>
-  <tile id="55">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/switchMid.png"/>
-  </tile>
-  <tile id="56">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/switchRight.png"/>
-  </tile>
-  <tile id="57">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/weight.png"/>
-  </tile>
-  <tile id="58">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Items/weightChained.png"/>
-  </tile>
- </tileset>
- <tileset firstgid="78" name="Tiles" tilewidth="70" tileheight="70">
-  <tile id="0">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/box.png"/>
-  </tile>
-  <tile id="1">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxAlt.png"/>
-  </tile>
-  <tile id="2">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxCoin.png"/>
-  </tile>
-  <tile id="3">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxCoin_disabled.png"/>
-  </tile>
-  <tile id="4">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxCoinAlt.png"/>
-  </tile>
-  <tile id="5">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxCoinAlt_disabled.png"/>
-  </tile>
-  <tile id="6">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxEmpty.png"/>
-  </tile>
-  <tile id="7">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxExplosive.png"/>
-  </tile>
-  <tile id="8">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxExplosive_disabled.png"/>
-  </tile>
-  <tile id="9">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxExplosiveAlt.png"/>
-  </tile>
-  <tile id="10">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxItem.png"/>
-  </tile>
-  <tile id="11">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxItem_disabled.png"/>
-  </tile>
-  <tile id="12">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxItemAlt.png"/>
-  </tile>
-  <tile id="13">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxItemAlt_disabled.png"/>
-  </tile>
-  <tile id="14">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/boxWarning.png"/>
-  </tile>
-  <tile id="15">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/brickWall.png"/>
-  </tile>
-  <tile id="16">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/bridge.png"/>
-  </tile>
-  <tile id="17">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/bridgeLogs.png"/>
-  </tile>
-  <tile id="18">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/door_closedMid.png"/>
-  </tile>
-  <tile id="19">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/door_closedTop.png"/>
-  </tile>
-  <tile id="20">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/door_openMid.png"/>
-  </tile>
-  <tile id="21">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/door_openTop.png"/>
-  </tile>
-  <tile id="22">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/fence.png"/>
-  </tile>
-  <tile id="23">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/fenceBroken.png"/>
-  </tile>
-  <tile id="24">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/ladder_mid.png"/>
-  </tile>
-  <tile id="25">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/ladder_top.png"/>
-  </tile>
-  <tile id="26">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidLava.png"/>
-  </tile>
-  <tile id="27">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidLavaTop.png"/>
-  </tile>
-  <tile id="28">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidLavaTop_mid.png"/>
-  </tile>
-  <tile id="29">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidWater.png"/>
-  </tile>
-  <tile id="30">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidWaterTop.png"/>
-  </tile>
-  <tile id="31">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/liquidWaterTop_mid.png"/>
-  </tile>
-  <tile id="32">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/lock_blue.png"/>
-  </tile>
-  <tile id="33">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/lock_green.png"/>
-  </tile>
-  <tile id="34">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/lock_red.png"/>
-  </tile>
-  <tile id="35">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/lock_yellow.png"/>
-  </tile>
-  <tile id="36">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/ropeAttached.png"/>
-  </tile>
-  <tile id="37">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/ropeHorizontal.png"/>
-  </tile>
-  <tile id="38">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/ropeVertical.png"/>
-  </tile>
-  <tile id="39">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/sign.png"/>
-  </tile>
-  <tile id="40">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/signExit.png"/>
-  </tile>
-  <tile id="41">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/signLeft.png"/>
-  </tile>
-  <tile id="42">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/signRight.png"/>
-  </tile>
-  <tile id="43">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/tochLit.png"/>
-   <animation>
-    <frame tileid="44" duration="100"/>
-    <frame tileid="43" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="44">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/tochLit2.png"/>
-   <animation>
-    <frame tileid="43" duration="100"/>
-    <frame tileid="44" duration="100"/>
-   </animation>
-  </tile>
-  <tile id="45">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/torch.png"/>
-  </tile>
-  <tile id="46">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/window.png"/>
-  </tile>
- </tileset>
- <tileset firstgid="125" name="Grass" tilewidth="70" tileheight="146">
-  <tile id="0">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grass.png"/>
-  </tile>
-  <tile id="1">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCenter.png"/>
-  </tile>
-  <tile id="2">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCenter_rounded.png"/>
-  </tile>
-  <tile id="3">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCliffLeft.png"/>
-  </tile>
-  <tile id="4">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCliffLeftAlt.png"/>
-  </tile>
-  <tile id="5">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCliffRight.png"/>
-  </tile>
-  <tile id="6">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassCliffRightAlt.png"/>
-  </tile>
-  <tile id="7">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHalf.png"/>
-  </tile>
-  <tile id="8">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHalfLeft.png"/>
-  </tile>
-  <tile id="9">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHalfMid.png"/>
-  </tile>
-  <tile id="10">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHalfRight.png"/>
-  </tile>
-  <tile id="11">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHillLeft.png"/>
-   <objectgroup draworder="index">
-    <object id="0" x="70" y="0.666667">
-     <polygon points="0,0 -70.3333,70 0.333333,69.6667"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="12">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHillLeft2.png"/>
-  </tile>
-  <tile id="13">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHillRight.png"/>
-  </tile>
-  <tile id="14">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassHillRight2.png"/>
-  </tile>
-  <tile id="15">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassLeft.png"/>
-  </tile>
-  <tile id="16">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassMid.png"/>
-  </tile>
-  <tile id="17">
-   <image width="70" height="70" source="../../../Desktop/Kenney.nl/Base pack/Tiles/grassRight.png"/>
-  </tile>
-  <tile id="18">
-   <image width="48" height="146" source="../../../Desktop/Kenney.nl/Base pack/Tiles/hill_large.png"/>
-  </tile>
-  <tile id="19">
-   <image width="48" height="146" source="../../../Desktop/Kenney.nl/Base pack/Tiles/hill_largeAlt.png"/>
-  </tile>
-  <tile id="20">
-   <image width="48" height="106" source="../../../Desktop/Kenney.nl/Base pack/Tiles/hill_small.png"/>
-  </tile>
-  <tile id="21">
-   <image width="48" height="106" source="../../../Desktop/Kenney.nl/Base pack/Tiles/hill_smallAlt.png"/>
-  </tile>
- </tileset>
- <layer name="Tile Layer 1" width="60" height="15">
+ <layer name="Platforms" width="60" height="15">
+  <data>
+   <tile gid="71"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="73"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="43"/>
+   <tile gid="44"/>
+   <tile gid="45"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+  </data>
+ </layer>
+ <layer name="Ladders" width="60" height="15">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>

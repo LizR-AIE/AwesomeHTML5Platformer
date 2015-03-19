@@ -4,14 +4,14 @@ var Player = function()
 	
 	// A Vector2 that represents the Players x and y
 	this.position = new Vector2();
-	this.position.set(9 * TILE, 0 * TILE);
+	this.position.set(0 * TILE, 1 * TILE);
 	
 	// A Vector2 that represents the Players width and height
 	this.size = new Vector2();
-	this.size.set(159, 163);
+	this.size.set(70, 96);
 	
 	this.offset = new Vector2();
-	this.offset.set(-55, -87);
+	this.offset.set(0, -35);
 	
 	this.velocity = new Vector2();
 	
@@ -56,22 +56,23 @@ Player.prototype.update = function(deltaTime)
 		this.jumping = true;
 	}
 	
-	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
-	
+	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
+			
 	this.velocity.x = bound(this.velocity.x + (deltaTime * ddx), -MAXDX, MAXDX);
 	this.velocity.y = bound(this.velocity.y + (deltaTime * ddy), -MAXDY, MAXDY);
-	
+		
 	if ((wasLeft && (this.velocity.x > 0)) ||
 		(wasRight && (this.velocity.x < 0)))
 	{
 		this.velocity.x = 0;
 	}
-		
+	
 	var tx = pixelToTile(this.position.x);
 	var ty = pixelToTile(this.position.y);
 	var nx = (this.position.x)%TILE;
 	var ny = (this.position.y)%TILE;
+	
 	var cell = cellAtTileCoord(LAYER_PLATFORMS, tx, ty);
 	var cellright = cellAtTileCoord(LAYER_PLATFORMS, tx + 1, ty);
     var celldown = cellAtTileCoord(LAYER_PLATFORMS, tx, ty + 1);
@@ -103,7 +104,7 @@ Player.prototype.update = function(deltaTime)
 	}
 	if (this.velocity.x > 0) 
 	{
-		if ((cellright && !cell) || (celldiag  && !celldown && ny))  
+		if ((cellright && !cell) || (celldiag  && !celldown && ny)) 
 		{
 			this.position.x = tileToPixel(tx);     	// clamp the x position to avoid moving into the platform we just hit
 			this.velocity.x = 0;            		// stop horizontal velocity
@@ -111,7 +112,7 @@ Player.prototype.update = function(deltaTime)
 	}
 	else if (this.velocity.x < 0) 
 	{
-		if ((cell && !cellright) || (celldown && !celldiag && ny))  
+		if ((cell && !cellright) || (celldown && !celldiag && ny))
 		{
 			this.position.x = tileToPixel(tx + 1); 	 // clamp the x position to avoid moving into the platform we just hit
 			this.velocity.x = 0;          		 // stop horizontal velocity
@@ -125,7 +126,7 @@ Player.prototype.draw = function()
 	
 	context.translate(this.position.x, this.position.y);
 	context.rotate(this.rotation);
-	context.drawImage(this.image, -this.size.x/2, -this.size.y/2);
+	context.drawImage(this.image, -this.size.x/2, -this.size.y/2 + );
 	
 	context.restore();
 }

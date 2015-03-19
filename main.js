@@ -33,19 +33,19 @@ var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
 var LAYER_COUNT = 3;
-var LAYER_BACKGROUND = 0;
-var LAYER_PLATFORMS = 1;
-var LAYER_LADDERS = 2;
+var LAYER_BACKGROUND = 2;
+var LAYER_PLATFORMS = 0;
+var LAYER_LADDERS = 1;
 
 var MAP = [ tw = 60, th = 15 ];
-var TILE = 35;
-var TILESET_TILE = TILE * 2;
+var TILE = 70;
+var TILESET_TILE = TILE;
 var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
 var TILESET_COUNT_X = 14;
 var TILESET_COUNT_Y = 14;
 
-var METER = TILE;
+var METER = TILE/2;
 var GRAVITY = METER * 9.8 * 6;
 var MAXDX = METER * 10;
 var MAXDY = METER * 15;
@@ -81,11 +81,8 @@ function initialize()
 				if(level1.layers[layerIndex].data[index] != 0)
 				{
 					cells[layerIndex][y][x] = 1;
-					cells[layerIndex][y-1][x] = 1;
-					cells[layerIndex][y-1][x+1] = 1;
-					cells[layerIndex][y][x+1] = 1;
 				}
-				else if(cells[layerIndex][y][x] != 1)
+				else
 				{
 					cells[layerIndex][y][x] = 0;
 				}
@@ -146,7 +143,7 @@ function drawMap()
 					var tileIndex = level1.layers[layerIndex].data[index] - 1;
 					var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
 					var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
-					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
+					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
 				}
 				index++;
 			}

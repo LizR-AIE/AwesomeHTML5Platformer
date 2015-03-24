@@ -11,7 +11,7 @@ var Player = function()
 	this.size.set(70, 96);
 	
 	this.offset = new Vector2();
-	this.offset.set(0, -35);
+	this.offset.set(0, -12);
 	
 	this.velocity = new Vector2();
 	
@@ -126,7 +126,7 @@ Player.prototype.draw = function()
 	
 	context.translate(this.position.x, this.position.y);
 	context.rotate(this.rotation);
-	context.drawImage(this.image, -this.size.x/2, -this.size.y/2 + );
+	context.drawImage(this.image, -this.size.x/2 + this.offset.x, -this.size.y/2 + this.offset.y);
 	
 	context.restore();
 }

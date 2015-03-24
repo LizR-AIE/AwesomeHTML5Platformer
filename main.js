@@ -143,7 +143,7 @@ function drawMap()
 					var tileIndex = level1.layers[layerIndex].data[index] - 1;
 					var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
 					var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
-					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
+					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE - TILESET_TILE / 2, y*TILE - TILESET_TILE / 2, TILESET_TILE, TILESET_TILE);
 				}
 				index++;
 			}

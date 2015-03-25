@@ -1,2 +1,0 @@
-alienGreen_walk1 = 0 0 70 96
-alienGreen_walk2 = 71 0 70 96

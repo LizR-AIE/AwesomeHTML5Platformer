@@ -32,26 +32,34 @@ function getDeltaTime()
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
-var LAYER_COUNT = 3;
-var LAYER_BACKGROUND = 2;
-var LAYER_PLATFORMS = 0;
-var LAYER_LADDERS = 1;
+var LAYER_COUNT = 2;
+var LAYER_BACKGROUND = 0;
+//var LAYER_BACKGROUND2 = 3;
+//var LAYER_LADDERS = 2;
+var LAYER_PLATFORMS = 1;
+//var LAYER_PLATFORMS2 = 0;
 
-var MAP = [ tw = 60, th = 15 ];
-var TILE = 70;
+var MAP = [ tw = 60, th = 20 ];
+var TILE = 21;
 var TILESET_TILE = TILE;
 var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
-var TILESET_COUNT_X = 14;
-var TILESET_COUNT_Y = 14;
+var TILESET_COUNT_X = [];
+var TILESET_COUNT_Y = [];
+
+TILESET_COUNT_X[0] = 11;
+TILESET_COUNT_Y[0] = 9;
+
+TILESET_COUNT_X[1] = 30;
+TILESET_COUNT_Y[1] = 30;
 
 var METER = TILE/2;
 var GRAVITY = METER * 9.8 * 6;
 var MAXDX = METER * 10;
-var MAXDY = METER * 15;
+var MAXDY = METER * 23;
 var ACCEL = MAXDX * 2;
 var FRICTION = MAXDX * 6;
-var JUMP = METER * 1500;
+var JUMP = METER * 1600;
 
 // some variables to calculate the Frames Per Second (FPS - this tells use
 // how fast our game is running, and allows us to make the game run at a 
@@ -63,8 +71,12 @@ var fpsTime = 0;
 var player = new Player();
 var keyboard = new Keyboard();
 
-var tileset = document.createElement("img");
-tileset.src = "tileset.png";
+var tileSets = [];
+for(var tileSetIndex = 0; tileSetIndex < level1.tilesets.length; tileSetIndex++)
+{
+	tileSets[tileSetIndex] = document.createElement("img");
+	tileSets[tileSetIndex].src = level1.tilesets[tileSetIndex].image;
+}
 
 var cells = [];
 function initialize()
@@ -73,6 +85,7 @@ function initialize()
 	{
 		cells[layerIndex] = [];
 		var index = 0;
+				
 		for(var y = 0; y < level1.layers[layerIndex].height; y++)
 		{
 			cells[layerIndex][y] = [];
@@ -140,10 +153,20 @@ function drawMap()
 			{
 				if(level1.layers[layerIndex].data[index] != 0)
 				{
-					var tileIndex = level1.layers[layerIndex].data[index] - 1;
-					var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
-					var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
-					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE - TILESET_TILE / 2, y*TILE - TILESET_TILE / 2, TILESET_TILE, TILESET_TILE);
+					var tileIndex = level1.layers[layerIndex].data[index] - level1.tilesets[layerIndex].firstgid;
+					if(layerIndex == LAYER_BACKGROUND)
+					{					
+						var sx = (tileIndex % TILESET_COUNT_X[0]) * (TILESET_TILE);
+						var sy = (Math.floor(tileIndex / TILESET_COUNT_Y[0])) * (TILESET_TILE);
+						context.drawImage(tileSets[0], sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
+					}
+					else
+					{
+						
+						var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X[1]) * (TILESET_TILE + TILESET_SPACING);
+						var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y[1])) * (TILESET_TILE + TILESET_SPACING);
+						context.drawImage(tileSets[1], sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
+					}
 				}
 				index++;
 			}

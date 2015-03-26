@@ -155,9 +155,15 @@ function drawMap()
 				{
 					var tileIndex = level1.layers[layerIndex].data[index] - level1.tilesets[layerIndex].firstgid;
 					if(layerIndex == LAYER_BACKGROUND)
-					{					
+					{
+						//if(tileIndex > 0)
+						//	console.log(tileIndex)
+						
 						var sx = (tileIndex % TILESET_COUNT_X[0]) * (TILESET_TILE);
-						var sy = (Math.floor(tileIndex / TILESET_COUNT_Y[0])) * (TILESET_TILE);
+						
+						var foo = tileIndex / TILESET_COUNT_X[0];
+						var sy = (Math.floor(foo)) * (TILESET_TILE);
+						
 						context.drawImage(tileSets[0], sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
 					}
 					else

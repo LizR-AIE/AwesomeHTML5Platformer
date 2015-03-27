@@ -36,6 +36,7 @@ var SCREEN_HEIGHT = canvas.height;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 var LAYER_COUNT = 2;
 var LAYER_BACKGROUND = 0;
 var LAYER_PLATFORMS = 1;
@@ -44,6 +45,8 @@ var MAP = [ tw = 60, th = 20 ];
 var TILE = 21;
 var TILESET_TILE = TILE;
 =======
+=======
+>>>>>>> parent of 715da26... Can move the player around and jump
 =======
 >>>>>>> parent of 715da26... Can move the player around and jump
 var LAYER_COUNT = 3;
@@ -55,6 +58,7 @@ var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
 var TILESET_COUNT_X = [];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 TILESET_COUNT_X[0] = 11;
@@ -71,6 +75,8 @@ var JUMP = METER * 1600;
 var score = 0;
 var lives = 3;
 =======
+=======
+>>>>>>> parent of 715da26... Can move the player around and jump
 =======
 >>>>>>> parent of 715da26... Can move the player around and jump
 // some variables to calculate the Frames Per Second (FPS - this tells use
@@ -94,6 +100,7 @@ for(var tileSetIndex = 0; tileSetIndex < level1.tilesets.length; tileSetIndex++)
 var heart = document.createElement("img");
 heart.src = "heart.png";
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 var cells = [];
@@ -160,6 +167,8 @@ function bound(value, min, max)
 	return value;
 }
 
+=======
+>>>>>>> parent of 715da26... Can move the player around and jump
 =======
 >>>>>>> parent of 715da26... Can move the player around and jump
 =======

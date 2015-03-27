@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //var LEFT 	= 0;
 //var RIGHT 	= 1;
 
@@ -36,8 +37,12 @@ var ANIM_MAX = 16;
 
 
 >>>>>>> parent of 715da26... Can move the player around and jump
+=======
 
 
+
+
+>>>>>>> parent of 715da26... Can move the player around and jump
 
 
 
@@ -51,8 +56,13 @@ var ANIM_MAX = 16;
 
 <<<<<<< HEAD
 
+
+<<<<<<< HEAD
+
 >>>>>>> parent of 715da26... Can move the player around and jump
 
+=======
+>>>>>>> parent of 715da26... Can move the player around and jump
 =======
 >>>>>>> parent of 715da26... Can move the player around and jump
 var Player = function()
@@ -75,6 +85,7 @@ var Player = function()
 	this.sprite.buildAnimation(19, 8, 330, 252, 0.05, [121,122,123,124,125,126,127,128,129,130,131,132,133,134]); //ANIM_WALK_TOSS = 14;
 	this.sprite.buildAnimation(19, 8, 330, 252, 0.05, [135,146,137,138,139,140,141,142,143,144,145,146,147,148]); //ANIM_WALK = 15;
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	//this.sprite = new Sprite("ChuckNorris.png");
@@ -136,6 +147,17 @@ var Player = function()
 	// A Vector2 that represents the Players width and height
 	this.size = new Vector2();
 >>>>>>> parent of 715da26... Can move the player around and jump
+=======
+	// A Vector2 that represents the Players x and y
+	this.position = new Vector2();
+	this.startPosition = new Vector2();
+	
+	this.startPosition.set(canvas.width/2, canvas.height/2);
+	this.position = this.startPosition; 
+	
+	// A Vector2 that represents the Players width and height
+	this.size = new Vector2();
+>>>>>>> parent of 715da26... Can move the player around and jump
 	this.size.set(159, 163);
 		
 	this.image.src = "hero.png";
@@ -144,6 +166,7 @@ var Player = function()
 
 Player.prototype.update = function(deltaTime)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	//-----------------------------
@@ -411,6 +434,20 @@ Player.prototype.update = function(deltaTime)
 			this.velocity.x = 0;          		 // stop horizontal velocity
 		}
 =======
+		this.rotation += deltaTime;
+>>>>>>> parent of 715da26... Can move the player around and jump
+=======
+	if(typeof(this.rotation) == "undefined")
+	{
+		this.rotation = 0;
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	{
+		this.rotation -= deltaTime;
+	}
+	else
+	{
 		this.rotation += deltaTime;
 >>>>>>> parent of 715da26... Can move the player around and jump
 =======

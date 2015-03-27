@@ -1,6 +1,4 @@
 var canvas = document.getElementById("gameCanvas");
-canvas.width = document.body.clientWidth - 16;
-canvas.height = document.body.clientHeight - 16;
 var context = canvas.getContext("2d");
 
 var startFrameMillis = Date.now();
@@ -34,145 +32,28 @@ function getDeltaTime()
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-var LAYER_COUNT = 2;
-var LAYER_BACKGROUND = 0;
-var LAYER_PLATFORMS = 1;
-
-var MAP = [ tw = 60, th = 20 ];
-var TILE = 21;
-var TILESET_TILE = TILE;
-=======
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
 var LAYER_COUNT = 3;
 var MAP = [ tw = 60, th = 15 ];
 var TILE = 35;
 var TILESET_TILE = TILE * 2;
->>>>>>> parent of 715da26... Can move the player around and jump
 var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
-var TILESET_COUNT_X = [];
+var TILESET_COUNT_X = 14;
+var TILESET_COUNT_Y = 14;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-TILESET_COUNT_X[0] = 11;
-TILESET_COUNT_X[1] = 30;
-
-var METER = TILE/2;
-var GRAVITY = METER * 9.8 * 6;
-var MAXDX = METER * 10;
-var MAXDY = METER * 23;
-var ACCEL = MAXDX * 2;
-var FRICTION = MAXDX * 6;
-var JUMP = METER * 1600;
-
-var score = 0;
-var lives = 3;
-=======
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
 // some variables to calculate the Frames Per Second (FPS - this tells use
 // how fast our game is running, and allows us to make the game run at a 
 // constant speed)
 var fps = 0;
 var fpsCount = 0;
 var fpsTime = 0;
->>>>>>> parent of 715da26... Can move the player around and jump
 
 var player = new Player();
 var keyboard = new Keyboard();
 
-var tileSets = [];
-for(var tileSetIndex = 0; tileSetIndex < level1.tilesets.length; tileSetIndex++)
-{
-	tileSets[tileSetIndex] = document.createElement("img");
-	tileSets[tileSetIndex].src = level1.tilesets[tileSetIndex].image;
-}
+var tileset = document.createElement("img");
+tileset.src = "tileset.png";
 
-var heart = document.createElement("img");
-heart.src = "heart.png";
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-var cells = [];
-function initialize()
-{
-	for(var layerIndex = 0; layerIndex < LAYER_COUNT; layerIndex++)
-	{
-		cells[layerIndex] = [];
-		var index = 0;
-				
-		for(var y = 0; y < level1.layers[layerIndex].height; y++)
-		{
-			cells[layerIndex][y] = [];
-			for(var x = 0; x < level1.layers[layerIndex].width; x++)
-			{
-				if(level1.layers[layerIndex].data[index] != 0)
-				{
-					cells[layerIndex][y][x] = 1;
-				}
-				else
-				{
-					cells[layerIndex][y][x] = 0;
-				}
-				index++;
-			}
-		}
-	}
-}
-
-function cellAtPixelCoord(layer, x, y)
-{
-	if(x < 0 || x > SCREEN_WIDTH || y < 0)
-		return 1;
-	if(y > SCREEN_HEIGHT)
-		return 0;
-	return cellAtTileCoord(layer, pixelTotile(x), pixelTotile(y));
-}
-
-function cellAtTileCoord(layer, tx, ty)
-{
-	if(tx < 0 || tx >= MAP.tw || ty < 0)
-		return 1;
-	if(ty >= MAP.th)
-		return 0;
-	return cells[layer][ty][tx];
-}
-
-function tileToPixel(tile)
-{
-	return tile * TILE;
-}
-
-function pixelToTile(pixel)
-{
-	return Math.floor(pixel/TILE);
-}
-
-function bound(value, min, max)
-{
-	if(value < min)
-		return min;
-	if(value > max)
-		return max;
-	return value;
-}
-
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
-=======
->>>>>>> parent of 715da26... Can move the player around and jump
 function drawMap()
 {
 	for(var layerIndex = 0; layerIndex < LAYER_COUNT; layerIndex++)
@@ -184,21 +65,10 @@ function drawMap()
 			{
 				if(level1.layers[layerIndex].data[index] != 0)
 				{
-					
-					if(layerIndex == LAYER_BACKGROUND)
-					{
-						var tileIndex = level1.layers[layerIndex].data[index] - level1.tilesets[0].firstgid;
-						var sx = (tileIndex % TILESET_COUNT_X[0]) * (TILESET_TILE);
-						var sy = (Math.floor(tileIndex / TILESET_COUNT_X[0])) * (TILESET_TILE);
-						context.drawImage(tileSets[0], sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
-					}
-					else
-					{
-						var tileIndex = level1.layers[layerIndex].data[index] - level1.tilesets[1].firstgid;
-						var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X[1]) * (TILESET_TILE + TILESET_SPACING);
-						var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_X[1])) * (TILESET_TILE + TILESET_SPACING);
-						context.drawImage(tileSets[1], sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, y*TILE, TILESET_TILE, TILESET_TILE);
-					}
+					var tileIndex = level1.layers[layerIndex].data[index] - 1;
+					var sx = TILESET_PADDING + (tileIndex % TILESET_COUNT_X) * (TILESET_TILE + TILESET_SPACING);
+					var sy = TILESET_PADDING + (Math.floor(tileIndex / TILESET_COUNT_Y)) * (TILESET_TILE + TILESET_SPACING);
+					context.drawImage(tileset, sx, sy, TILESET_TILE, TILESET_TILE, x*TILE, (y-1)*TILE, TILESET_TILE, TILESET_TILE);
 				}
 				index++;
 			}
@@ -220,31 +90,21 @@ function run()
 	
 	// Draw code goes here				
 	player.draw();
-	
-	context.fillStyle = "yellow";
-	context.font = "32px Arial";
-	var scoreText = "Score: " + score;
-	context.fillText(scoreText, SCREEN_WIDTH - 170, 52);
-	
-	for(var i = 0; i < lives; i++)
-	{
-		context.drawImage(heart, 20 + (heart.width + 2) * i, 10);
-	}
-	
+				
 	// update the frame counter 
-	//fpsTime += deltaTime;
-	//fpsCount++;
-	//if(fpsTime >= 1)
-	//{
-	//	fpsTime -= 1;
-	//	fps = fpsCount;
-	//	fpsCount = 0;
-	//}		
-	//	
-	//// draw the FPS
-	//context.fillStyle = "#f00";
-	//context.font="14px Arial";
-	//context.fillText("FPS: " + fps, 5, 20, 100);
+	fpsTime += deltaTime;
+	fpsCount++;
+	if(fpsTime >= 1)
+	{
+		fpsTime -= 1;
+		fps = fpsCount;
+		fpsCount = 0;
+	}		
+		
+	// draw the FPS
+	context.fillStyle = "#f00";
+	context.font="14px Arial";
+	context.fillText("FPS: " + fps, 5, 20, 100);
 }
 
 

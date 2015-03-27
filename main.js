@@ -34,6 +34,7 @@ function getDeltaTime()
 var SCREEN_WIDTH = canvas.width;
 var SCREEN_HEIGHT = canvas.height;
 
+<<<<<<< HEAD
 var LAYER_COUNT = 2;
 var LAYER_BACKGROUND = 0;
 var LAYER_PLATFORMS = 1;
@@ -41,10 +42,17 @@ var LAYER_PLATFORMS = 1;
 var MAP = [ tw = 60, th = 20 ];
 var TILE = 21;
 var TILESET_TILE = TILE;
+=======
+var LAYER_COUNT = 3;
+var MAP = [ tw = 60, th = 15 ];
+var TILE = 35;
+var TILESET_TILE = TILE * 2;
+>>>>>>> parent of 715da26... Can move the player around and jump
 var TILESET_PADDING = 2;
 var TILESET_SPACING = 2;
 var TILESET_COUNT_X = [];
 
+<<<<<<< HEAD
 TILESET_COUNT_X[0] = 11;
 TILESET_COUNT_X[1] = 30;
 
@@ -58,6 +66,14 @@ var JUMP = METER * 1600;
 
 var score = 0;
 var lives = 3;
+=======
+// some variables to calculate the Frames Per Second (FPS - this tells use
+// how fast our game is running, and allows us to make the game run at a 
+// constant speed)
+var fps = 0;
+var fpsCount = 0;
+var fpsTime = 0;
+>>>>>>> parent of 715da26... Can move the player around and jump
 
 var player = new Player();
 var keyboard = new Keyboard();
@@ -72,6 +88,7 @@ for(var tileSetIndex = 0; tileSetIndex < level1.tilesets.length; tileSetIndex++)
 var heart = document.createElement("img");
 heart.src = "heart.png";
 
+<<<<<<< HEAD
 var cells = [];
 function initialize()
 {
@@ -136,6 +153,8 @@ function bound(value, min, max)
 	return value;
 }
 
+=======
+>>>>>>> parent of 715da26... Can move the player around and jump
 function drawMap()
 {
 	for(var layerIndex = 0; layerIndex < LAYER_COUNT; layerIndex++)
@@ -210,7 +229,7 @@ function run()
 	//context.fillText("FPS: " + fps, 5, 20, 100);
 }
 
-initialize();
+
 //-------------------- Don't modify anything below here
 
 

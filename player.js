@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //var LEFT 	= 0;
 //var RIGHT 	= 1;
 
@@ -29,6 +30,22 @@ var ANIM_MAX = 16;
 //var ANIM_WALK_RIGHT 	= 7;
 //var ANIM_SHOOT_RIGHT 	= 8;
 //var ANIM_MAX 			= 9;
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> parent of 715da26... Can move the player around and jump
 
 var Player = function()
 {
@@ -50,6 +67,7 @@ var Player = function()
 	this.sprite.buildAnimation(19, 8, 330, 252, 0.05, [121,122,123,124,125,126,127,128,129,130,131,132,133,134]); //ANIM_WALK_TOSS = 14;
 	this.sprite.buildAnimation(19, 8, 330, 252, 0.05, [135,146,137,138,139,140,141,142,143,144,145,146,147,148]); //ANIM_WALK = 15;
 	
+<<<<<<< HEAD
 	//this.sprite = new Sprite("ChuckNorris.png");
 	//this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [0, 1, 2, 3, 4, 5, 6, 7]);  									// IDLE_LEFT
 	//this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [8, 9, 10, 11, 12]);  										// JUMP_LEFT
@@ -88,10 +106,25 @@ var Player = function()
 	this.climbing	= false;
 	this.hurt		= false;
 	this.dead		= false;
+=======
+	// A Vector2 that represents the Players x and y
+	this.position = new Vector2();
+	this.startPosition = new Vector2();
+	
+	this.startPosition.set(canvas.width/2, canvas.height/2);
+	this.position = this.startPosition; 
+	
+	// A Vector2 that represents the Players width and height
+	this.size = new Vector2();
+	this.size.set(159, 163);
+		
+	this.image.src = "hero.png";
+>>>>>>> parent of 715da26... Can move the player around and jump
 };
 
 Player.prototype.update = function(deltaTime)
 {
+<<<<<<< HEAD
 	//-----------------------------
 	// ANIMATIONS	
 	//-----------------------------
@@ -281,10 +314,13 @@ Player.prototype.update = function(deltaTime)
 		ddx = ddx - FRICTION;
 		
 	if(jump && !this.jumping && !this.climbing && !this.looting && !this.running && !this.hurt && !this.dead)
+=======
+	if(typeof(this.rotation) == "undefined")
+>>>>>>> parent of 715da26... Can move the player around and jump
 	{
-		ddy = ddy - JUMP;
-		this.jumping = true;
+		this.rotation = 0;
 	}
+<<<<<<< HEAD
 		
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
@@ -338,15 +374,26 @@ Player.prototype.update = function(deltaTime)
 			this.position.x = tileToPixel(tx);     	// clamp the x position to avoid moving into the platform we just hit
 			this.velocity.x = 0;            		// stop horizontal velocity
 		}
-	}
-	else if (this.velocity.x < 0) 
+=======
+	
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
+		this.rotation -= deltaTime;
+>>>>>>> parent of 715da26... Can move the player around and jump
+	}
+	else
+	{
+<<<<<<< HEAD
 		if ((cell && !cellright) || (celldown && !celldiag && ny))
 		{
 			this.position.x = tileToPixel(tx + 1); 	 // clamp the x position to avoid moving into the platform we just hit
 			this.velocity.x = 0;          		 // stop horizontal velocity
 		}
+=======
+		this.rotation += deltaTime;
+>>>>>>> parent of 715da26... Can move the player around and jump
 	}
+	
 };
 
 Player.prototype.draw = function()

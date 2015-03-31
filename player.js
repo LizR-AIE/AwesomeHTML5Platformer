@@ -41,6 +41,8 @@ var Player = function()
 	this.jumping = false;
 	
 	this.direction = LEFT;	
+	
+	this.cooldownTimer = 0;
 };
 
 Player.prototype.update = function(deltaTime)
@@ -94,9 +96,22 @@ Player.prototype.update = function(deltaTime)
 		}
 	} 
 
-	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true) 
+	if(keyboard.isKeyDown(keyboard.KEY_UP) == true) 
 	{
 		jump = true;
+	}
+	
+	if(this.cooldownTimer > 0)
+	{
+		this.cooldownTimer -= deltaTime;
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && this.cooldownTimer <= 0)
+	{
+		sfxFire.play();
+		this.cooldownTimer = 0.3;
+		
+		// TODO: add code for shooting a bullet
 	}
 	
 	var wasleft = this.velocity.x < 0;

@@ -73,6 +73,8 @@ var LAYER_COUNT = 3;
 var LAYER_BACKGOUND = 0;
 var LAYER_PLATFORMS = 1;
 var LAYER_LADDERS = 2;
+var LAYER_OBJECT_ENEMIES = 3;
+var LAYER_OBJECT_TRIGGERS = 4;
 
 var METER = TILE;
 var GRAVITY = METER * 9.8 * 6;
@@ -82,17 +84,25 @@ var ACCEL = MAXDX * 2;
 var FRICTION = MAXDX * 6;
 var JUMP = METER * 1500;
 
+var ENEMY_MAXDX = METER * 5;
+var ENEMY_ACCEL = ENEMY_MAXDX * 2;
+
+var enemies = [];
+var bullets = [];
+var cells = [];
+var player = new Player();
+
 var tileset = document.createElement("img");
 tileset.src = "tileset.png";
 
-var cells = [];
-
-var player = new Player();
+var heartImage = document.createElement("img");
+heartImage.src = "heart.png";
+heartImage.width = 50;
+heartImage.height = 41;
 
 var score = 0;
 var lives = 3;
-
-var worldOffsetX =0;
+var worldOffsetX = 0;
 
 // OVER
 
@@ -103,16 +113,19 @@ var worldOffsetX =0;
 
 function initialize() 
 {
+	var idx = 0;
+	
+	// initialize the collision map
 	for(var layerIdx = 0; layerIdx < LAYER_COUNT; layerIdx++) 
-	{ // initialize the collision map
+	{
 		cells[layerIdx] = [];
-		var idx = 0;
-		for(var y = 0; y < level1.layers[layerIdx].height; y++) 
+		idx = 0;
+		for(var y = 0; y < level1.layers[layerIdx].height; y++)
 		{
 			cells[layerIdx][y] = [];
-			for(var x = 0; x < level1.layers[layerIdx].width; x++) 
+			for(var x = 0; x < level1.layers[layerIdx].width; x++)
 			{
-				if(level1.layers[layerIdx].data[idx] != 0) 
+				if(level1.layers[layerIdx].data[idx] != 0)
 				{
 					// for each tile we find in the layer data, we need to create 4 collisions
 					// (because our collision squares are 35x35 but the tile in the
@@ -122,13 +135,52 @@ function initialize()
 					cells[layerIdx][y-1][x+1] = 1;
 					cells[layerIdx][y][x+1] = 1;
 				}
-				else if(cells[layerIdx][y][x] != 1) 
+				else if(cells[layerIdx][y][x] != 1)
 				{
 					// if we haven't set this cell's value, then set it to 0 now
 					cells[layerIdx][y][x] = 0;
 				}
 				idx++;
 			}
+		}
+	}
+	
+	cells[LAYER_OBJECT_TRIGGERS] = [];
+	idx = 0;
+	for(var y = 0; y < level1.layers[LAYER_OBJECT_TRIGGERS].height; y++)
+	{
+		cells[LAYER_OBJECT_TRIGGERS][y] = [];
+		for(var x = 0; x < level1.layers[LAYER_OBJECT_TRIGGERS].width; x++)
+		{
+			if(level1.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 0)
+			{
+				cells[LAYER_OBJECT_TRIGGERS][y][x] = 1;  
+				cells[LAYER_OBJECT_TRIGGERS][y-1][x] = 1;    
+				cells[LAYER_OBJECT_TRIGGERS][y-1][x+1] = 1;  
+				cells[LAYER_OBJECT_TRIGGERS][y][x+1] = 1;    
+			}
+			else if(level1.layers[LAYER_OBJECT_TRIGGERS].data[idx] != 1)
+			{
+				cells[LAYER_OBJECT_TRIGGERS][y][x] = 0;
+			}
+			idx++;
+		}
+	}
+	
+	// add enemies
+	idx = 0;
+	for(var y = 0; y < level1.layers[LAYER_OBJECT_ENEMIES].height; y++)
+	{
+		for(var x = 0; x < level1.layers[LAYER_OBJECT_ENEMIES].width; x++)	
+		{
+			if(level1.layers[LAYER_OBJECT_ENEMIES].data[idx] != 0)
+			{
+				var px = tileToPixel(x);
+				var py = tileToPixel(y);
+				var e = new Enemy(px, py);
+				enemies.push(e);
+			}
+			idx++;
 		}
 	}
 	
@@ -153,7 +205,7 @@ function initialize()
 
 function cellAtPixelCoord(layer, x,y)
 {
-	if(x<0 || x>SCREEN_WIDTH || y<0)
+	if(x<0 || x>SCREEN_WIDTH)
 	return 1;
 	// let the player drop of the bottom of the screen (this means death)
 	if(y>SCREEN_HEIGHT)
@@ -162,10 +214,10 @@ function cellAtPixelCoord(layer, x,y)
 };
 function cellAtTileCoord(layer, tx, ty)
 {
-	if(tx<0 || tx>=MAP.tw || ty<0)
+	if(tx<0 || tx>=MAP.tw)
 	return 1;
 	// let the player drop of the bottom of the screen (this means death)
-	if(ty>=MAP.th)
+	if(ty>=MAP.th || ty < 0)
 	return 0;
 	return cells[layer][ty][tx];
 };
@@ -184,6 +236,18 @@ function bound(value, min, max)
 	if(value > max)
 	return max;
 	return value;
+}
+
+function intersects(x1, y1, w1, h1, x2, y2, w2, h2)
+{
+	if(	y2 + h2 < y1 ||
+		x2 + w2 < x1 ||
+		x2 > x1 + w1 ||
+		y2 > y1 + h1)
+	{
+		return false;
+	}
+	return true;
 }
 
 function drawMap()
@@ -272,6 +336,52 @@ function HighScoreDraw()
 function GameUpdate(deltaTime)
 {
 	player.update(deltaTime);
+		
+	for(var i = 0; i < enemies.length; i++)
+	{
+		enemies[i].update(deltaTime);
+		if(player.isDead == false)
+		{
+			if(intersects(	enemies[i].position.x + (enemies[i].offset.x * 0.65),
+							enemies[i].position.y + (enemies[i].offset.y * 0.75),
+							enemies[i].width  + (enemies[i].offset.x * 0.65),
+							enemies[i].height + (enemies[i].offset.y * 0.65),
+							player.position.x + (player.offset.x * 0.65),
+							player.position.y + (player.offset.y * 0.75),
+							player.width  + (player.offset.x + 0.65),
+							player.height + (player.offset.y + 0.65)) == true)
+			{
+				player.isDead = true;
+			}
+		}
+	}
+	
+	var hit = false;
+	for(var i = 0; i < bullets.length; i++)
+	{
+		bullets[i].update(deltaTime);
+		if(	bullets[i].position.x - worldOffsetX < 0 || 
+			bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)
+			{
+				hit = true;
+			}
+		for(var j = 0; j < enemies.length; j++)
+		{
+			if(intersects( bullets[i].position.x, bullets[i].position.y, bullets[i].width, bullets[i].height,
+ 			     enemies[j].position.x, enemies[j].position.y, enemies[i].width, enemies[i].height) == true)
+			{
+				enemies.splice(j, 1);
+				hit = true;
+				score += 1;
+				break;
+			}
+		}
+		if (hit == true)
+		{
+			bullets.splice(i, 1);
+			break;
+		}
+	}
 	
 	if(player.isDead)
 		gameState = STATE_OVER;
@@ -282,15 +392,25 @@ function GameDraw()
 	drawMap();				
 	player.draw();
 	
+	for(var i = 0; i < enemies.length; i++)
+	{
+		enemies[i].draw();
+	}
+	
+	for(var i = 0; i < bullets.length; i++)
+	{
+		bullets[i].draw();
+	}
+	
 	context.fillStyle = "yellow";
 	context.font="32px Arial";
 	var scoreText = "Score: " + score;
 	context.fillText(scoreText, SCREEN_WIDTH - 170, 35);
 	
-	//for(var i=0; i<lives; i++)
-	//{
-	//	context.drawImage(heartImage, 20 + ((heartImage.width+2)*i), 10);
-	//}
+	for(var i=0; i<lives; i++)
+	{
+		context.drawImage(heartImage, 20 + ((heartImage.width+2)*i), 10);
+	}
 }
 
 function OverUpdate(deltaTime)

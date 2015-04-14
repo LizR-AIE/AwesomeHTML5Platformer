@@ -36,6 +36,7 @@ function getDeltaTime()
 // AUDIO
 var musicBackground;
 var sfxFire;
+var mute = true;
 
 // GLOBAL
 var SCREEN_WIDTH 	= canvas.width;
@@ -50,6 +51,8 @@ var STATE_OVER 		= 4;
 var gameState 		= STATE_SPLASH;
 
 var keyboard 		= new Keyboard();
+
+var debug = false;
 
 // SPLASH
 var splashTimer = 0;
@@ -183,24 +186,26 @@ function initialize()
 			idx++;
 		}
 	}
-	
-	musicBackground = new Howl(
+	if(!mute)
 	{
-		urls: ["background.ogg"],
-		loop: true,
-		buffer: true,
-		volume: 0.5
-	} );
-	musicBackground.play();
-	sfxFire = new Howl(
-	{
-		urls: ["fireEffect.ogg"],
-		buffer: true,
-		volume: 1,
-		onend: function() {
-			isSfxPlaying = false;
-		}
-	} );
+		musicBackground = new Howl(
+		{
+			urls: ["background.ogg"],
+			loop: true,
+			buffer: true,
+			volume: 0.5
+		} );
+		musicBackground.play();
+		sfxFire = new Howl(
+		{
+			urls: ["fireEffect.ogg"],
+			buffer: true,
+			volume: 1,
+			onend: function() {
+				isSfxPlaying = false;
+			}
+		} );
+	}
 }
 
 function cellAtPixelCoord(layer, x,y)
@@ -212,6 +217,7 @@ function cellAtPixelCoord(layer, x,y)
 	return 0;
 	return cellAtTileCoord(layer, p2t(x), p2t(y));
 };
+
 function cellAtTileCoord(layer, tx, ty)
 {
 	if(tx<0 || tx>=MAP.tw)
@@ -221,14 +227,17 @@ function cellAtTileCoord(layer, tx, ty)
 	return 0;
 	return cells[layer][ty][tx];
 };
+
 function tileToPixel(tile)
 {
 	return tile * TILE;
 };
+
 function pixelToTile(pixel)
 {
 	return Math.floor(pixel/TILE);
 };
+
 function bound(value, min, max)
 {
 	if(value < min)

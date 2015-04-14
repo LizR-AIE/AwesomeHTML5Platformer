@@ -37,6 +37,9 @@ Bullet.prototype.draw = function()
 {
 	this.sprite.draw(context, this.position.x - worldOffsetX, this.position.y);
 	
+	if(!debug)
+		return;
+	
 	context.beginPath();
 	context.lineWidth="2";
 	context.strokeStyle="red";

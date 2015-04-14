@@ -14,15 +14,15 @@ var ANIM_MAX = 9;
 var Player = function()
 {
 	this.sprite = new Sprite("ChuckNorris.png");
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [0, 1, 2, 3, 4, 5, 6, 7]);  									// IDLE_LEFT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [8, 9, 10, 11, 12]);  										// JUMP_LEFT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]);  	// WALK_LEFT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);  	// SHOOT_LEFT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]);  				// CLIMB
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [52, 53, 54, 55, 56, 57, 58, 59]);  							// IDLE_RIGHT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [60, 61, 62, 63, 64]);  										// JUMP_RIGHT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);  	// WALK_RIGHT
-	this.sprite.buildAnimation(12, 8, 165, 126, 0.05, [79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]);  	// SHOOT_RIGHT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [0, 1, 2, 3, 4, 5, 6, 7]);  									// IDLE_LEFT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [8, 9, 10, 11, 12]);  										// JUMP_LEFT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]);  	// WALK_LEFT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]);  	// SHOOT_LEFT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]);  				// CLIMB
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [52, 53, 54, 55, 56, 57, 58, 59]);  							// IDLE_RIGHT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [60, 61, 62, 63, 64]);  										// JUMP_RIGHT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);  	// WALK_RIGHT
+	this.sprite.buildAnimation(12, 8, 165, 126, 0.5, [79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]);  	// SHOOT_RIGHT
 	
 	this.offset = new Vector2();
 	this.offset.set(-55, -87);
@@ -44,6 +44,8 @@ var Player = function()
 	this.climbing = false;
 	
 	this.direction = LEFT;	
+	
+	this.shooting = false;
 	this.cooldownTimer = 0;
 	this.isDead = false;
 };
@@ -81,11 +83,11 @@ Player.prototype.update = function(deltaTime)
 		{
 			left = true;
 			this.direction = LEFT;
-			if(	this.sprite.currentAnimation != ANIM_WALK_LEFT && !this.jumping)
+			if(	this.sprite.currentAnimation != ANIM_WALK_LEFT && !this.jumping && this.cooldownTimer <= 0)
 			{
 				this.sprite.setAnimation(ANIM_WALK_LEFT);
 			}
-			else if(this.jumping)
+			else if(this.jumping && this.cooldownTimer <= 0)
 			{
 				this.sprite.setAnimation(ANIM_JUMP_LEFT);
 			}
@@ -94,11 +96,11 @@ Player.prototype.update = function(deltaTime)
 		{
 			right = true;
 			this.direction = RIGHT;
-			if(	this.sprite.currentAnimation != ANIM_WALK_RIGHT && !this.jumping)
+			if(	this.sprite.currentAnimation != ANIM_WALK_RIGHT && !this.jumping && this.cooldownTimer <= 0)
 			{
 				this.sprite.setAnimation(ANIM_WALK_RIGHT);
 			}
-			else if(this.jumping)
+			else if(this.jumping && this.cooldownTimer <= 0)
 			{
 				this.sprite.setAnimation(ANIM_JUMP_RIGHT);
 			}
@@ -109,12 +111,12 @@ Player.prototype.update = function(deltaTime)
 			{
 				if(this.direction == LEFT)
 				{
-					if(this.sprite.currentAnimation != ANIM_IDLE_LEFT)
+					if(this.sprite.currentAnimation != ANIM_IDLE_LEFT && this.cooldownTimer <= 0)
 						this.sprite.setAnimation(ANIM_IDLE_LEFT);
 				}
 				else
 				{
-					if(this.sprite.currentAnimation != ANIM_IDLE_RIGHT)
+					if(this.sprite.currentAnimation != ANIM_IDLE_RIGHT && this.cooldownTimer <= 0)
 						this.sprite.setAnimation(ANIM_IDLE_RIGHT);
 				}
 			}
@@ -132,11 +134,16 @@ Player.prototype.update = function(deltaTime)
 		
 		if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && this.cooldownTimer <= 0)
 		{
-			sfxFire.play();
+			if(!mute)
+				sfxFire.play();
 			this.cooldownTimer = 0.3;
-			
+						
 			var b = new Bullet(this.position.x, this.position.y, this.direction);
 			bullets.push(b);
+			if(this.direction == RIGHT)
+				this.sprite.setAnimation(ANIM_SHOOT_RIGHT);
+			else
+				this.sprite.setAnimation(ANIM_SHOOT_LEFT);
 		}
 	}
 	
@@ -351,6 +358,9 @@ Player.prototype.draw = function()
 		return;
 	
 	this.sprite.draw(context, this.position.x - worldOffsetX, this.position.y);
+	
+	if(!debug)
+		return;
 	
 	context.beginPath();
 	context.lineWidth="2";

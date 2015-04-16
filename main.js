@@ -53,10 +53,15 @@ var gameState 		= STATE_SPLASH;
 var keyboard 		= new Keyboard();
 
 var debug = false;
+var kenFont = "36px KenFuture"
+var green = "#76DD54";
+var purple = "#BB54DD";
+var yellow = "yellow";
+var red = "red";
 
 // SPLASH
 var splashTimer = 0;
-var splashInterval = 1;
+var splashInterval = 3;
 
 // MENU
 
@@ -314,8 +319,17 @@ function SplashUpdate(deltaTime)
 
 function SplashDraw()
 {
-	context.fillStyle = "#000";		
-	context.fillRect(50, 50, 50, 50);
+	// Background
+	context.fillStyle = green;
+	context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	
+	// Text
+	context.fillStyle = purple;
+	context.font = kenFont;
+	var splashText = "Awesome HTML 5 Platformer!";
+	var textMeasure = context.measureText(splashText);
+	console.log((SCREEN_WIDTH - textMeasure.width)/2);
+	context.fillText(splashText, (SCREEN_WIDTH - textMeasure.width)/2, 64);
 }
 
 function MenuUpdate(deltaTime)
@@ -412,7 +426,7 @@ function GameDraw()
 	}
 	
 	context.fillStyle = "yellow";
-	context.font="32px Arial";
+	context.font = kenFont;
 	var scoreText = "Score: " + score;
 	context.fillText(scoreText, SCREEN_WIDTH - 170, 35);
 	
@@ -435,8 +449,13 @@ function OverDraw()
 
 function run()
 {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	SCREEN_WIDTH 	= canvas.width;
+	SCREEN_HEIGHT 	= canvas.height;
+	
 	context.fillStyle = "#ccc";		
-	context.fillRect(0, 0, canvas.width, canvas.height);
+	context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	var deltaTime = getDeltaTime();
 

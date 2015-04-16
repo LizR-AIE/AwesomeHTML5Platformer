@@ -318,32 +318,28 @@ function SplashUpdate(deltaTime)
 }
 
 function SplashDraw()
-{
-	// Background
-	context.fillStyle = green;
-	context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-	
+{	
 	// Text
 	context.fillStyle = purple;
 	context.font = kenFont;
 	var splashText = "Awesome HTML 5 Platformer!";
 	var textMeasure = context.measureText(splashText);
-	console.log((SCREEN_WIDTH - textMeasure.width)/2);
 	context.fillText(splashText, (SCREEN_WIDTH - textMeasure.width)/2, 64);
 }
 
 function MenuUpdate(deltaTime)
 {
-	if(keyboard.isKeyDown(keyboard.KEY_SPACE))
-	{
-		gameState = STATE_GAME;
-	}
+	
 }
 
 function MenuDraw()
 {
-	context.fillStyle = "#fff";		
-	context.fillRect(50, 50, 50, 50);
+	// Menu flavour text
+	context.fillStyle = purple;
+	context.font = kenFont;
+	var menuText = "This is a menu";
+	var textMeasure = context.measureText(menuText);
+	context.fillText(menuText, (SCREEN_WIDTH - textMeasure.width)/2, 64);
 }
 
 function HighScoreUpdate(deltaTime)
@@ -454,11 +450,11 @@ function run()
 	SCREEN_WIDTH 	= canvas.width;
 	SCREEN_HEIGHT 	= canvas.height;
 	
-	context.fillStyle = "#ccc";		
+	context.fillStyle = green;
 	context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	var deltaTime = getDeltaTime();
-
+	
 	switch(gameState)
 	{
 		case(STATE_SPLASH):

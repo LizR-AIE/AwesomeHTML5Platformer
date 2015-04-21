@@ -64,6 +64,8 @@ var splashTimer = 0;
 var splashInterval = 3;
 
 // MENU
+var buttonTest = new Button(UI_GREY);
+buttonTest.normal.calculate();
 
 // HIGHSCORE
 var HighScore = 0;
@@ -340,6 +342,7 @@ function MenuDraw()
 	var menuText = "This is a menu";
 	var textMeasure = context.measureText(menuText);
 	context.fillText(menuText, (SCREEN_WIDTH - textMeasure.width)/2, 64);
+	buttonTest.draw(context);
 }
 
 function HighScoreUpdate(deltaTime)
@@ -445,8 +448,8 @@ function OverDraw()
 
 function run()
 {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas.width 	= window.innerWidth;
+	canvas.height 	= window.innerHeight;
 	SCREEN_WIDTH 	= canvas.width;
 	SCREEN_HEIGHT 	= canvas.height;
 	
@@ -462,6 +465,7 @@ function run()
 			SplashDraw();
 			break;
 		case(STATE_MENU):
+			//location.reload();
 			MenuUpdate(deltaTime);
 			MenuDraw();
 			break;

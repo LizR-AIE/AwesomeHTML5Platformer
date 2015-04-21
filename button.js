@@ -4,45 +4,29 @@ var UI_GREY = 2;
 var UI_RED = 3;
 var UI_YELLOW = 4;
 
+var STATE_NORMAL = 0;
+var STATE_HOVER = 1;
+var STATE_CLICKED = 2;
+
 var Button = function(color)
 {
-	var self = this;
-	
 	this.x = 0;
 	this.y = 0;
 	this.width = 0;
 	this.height = 0;
 	
-	this.image.normal = document.createElement("img");
-	this.image.hover = document.createElement("img");
-	this.image.click = document.createElement("img");
+	this.color = color;	
+	this.state = STATE_NORMAL;
 	
-	switch(color)
+	this.normal = new NinePatch("./uipack/PNG/blue_button06.png", new Vector2(10, 10));
+}
+
+Button.prototype.draw = function(context)
+{
+	switch(this.state)
 	{
-		case(UI_BLUE):
-		this.image.normal.src = "";
-		this.image.hover.src = "";
-		this.image.click.src = "";
-		break;
-		case(UI_GREEN):
-		this.image.normal.src =  "";
-		this.image.hover.src =  "";
-		this.image.click.src = "";
-		break;
-		case(UI_GREY):
-		this.image.normal.src =  "";
-		this.image.hover.src =  "";
-		this.image.click.src = "";
-		break;
-		case(UI_RED):
-		this.image.normal.src =  "";
-		this.image.hover.src =  "";
-		this.image.click.src = "";
-		break;
-		case(UI_YELLOW):
-		this.image.normal.src =  "";
-		this.image.hover.src =  "";
-		this.image.click.src = "";
+		case(STATE_NORMAL):
+		this.normal.draw(context, this.x, this.y);
 		break;
 	}
 }

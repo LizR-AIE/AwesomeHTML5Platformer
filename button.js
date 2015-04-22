@@ -10,15 +10,15 @@ var STATE_CLICKED = 2;
 
 var Button = function(color)
 {
-	this.x = 0;
-	this.y = 0;
+	this.x = 50;
+	this.y = 50;
 	this.width = 0;
 	this.height = 0;
 	
 	this.color = color;	
 	this.state = STATE_NORMAL;
 	
-	this.normal = new NinePatch("./uipack/PNG/blue_button06.png", new Vector2(10, 10));
+	this.normal = new NinePatch("./uipack/PNG/blue_button06.png", 10, 10, 250, 180);
 }
 
 Button.prototype.draw = function(context)

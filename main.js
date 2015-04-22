@@ -121,6 +121,11 @@ var worldOffsetX = 0;
 // Functions
 //--------------------
 
+context.onload = function()
+{
+	buttonTest.normal.calculate();
+}
+
 function initialize() 
 {
 	var idx = 0;

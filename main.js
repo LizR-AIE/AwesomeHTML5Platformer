@@ -84,17 +84,13 @@ var splashTimer = 0;
 var splashInterval = 3;
 
 // MENU
-buttons.push(new Button(UI_GREY));
-//console.log("SCREEN_WIDTH: " + SCREEN_WIDTH)
-//console.log("SCREEN_WIDTH/2: " + SCREEN_WIDTH/2)
-//console.log("buttons[0].width: " + buttons[0].width);
-//console.log("buttons[0].width/2: " + buttons[0].width/2);
-//console.log("(SCREEN_WIDTH / 2) - (buttons[0].width / 2): " + ((SCREEN_WIDTH / 2) - (buttons[0].width / 2)));
+buttons.push(new Button(UI_BLUE));
 buttons[0].x = ((SCREEN_WIDTH / 2) - (buttons[0].width / 2));
 buttons[0].y = 100;
 
 // HIGHSCORE
 var HighScore = 0;
+var HighScores = [];
 
 // GAME
 var MAP = { tw: 60, th: 15 };
@@ -365,7 +361,7 @@ function SplashDraw()
 
 function MenuUpdate(deltaTime)
 {
-	
+	buttons.update(deltaTime);
 }
 
 function MenuDraw()

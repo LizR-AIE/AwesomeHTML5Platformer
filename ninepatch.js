@@ -45,17 +45,40 @@ var NinePatch = function(filename, cSizeX, cSizeY, width, height)
 		this.destinationDimensions	[2].set(this.cornerSize.x, this.cornerSize.y);
 		
 		// Middle Left
+		this.sourcePositions		[3].set(0, this.cornerSize.y);
+		this.sourceDimensions		[3].set(this.cornerSize.x, this.middleSize.y);
+		this.destinationPositions	[3].set(0, this.destinationPositions[0].y + this.destinationDimensions[0].y);
+		this.destinationDimensions	[3].set(this.cornerSize.x, this.height - (this.cornerSize.y*2));
 		
 		// Middle Middle
+		this.sourcePositions		[4].set(this.cornerSize.x, this.cornerSize.y);
+		this.sourceDimensions		[4].set(this.middleSize.x, this.middleSize.y);
+		this.destinationPositions	[4].set(this.destinationPositions[0].x + this.destinationDimensions[0].x, this.destinationPositions[0].y + this.destinationDimensions[0].y);
+		this.destinationDimensions	[4].set(this.width - (this.cornerSize.x*2), this.height - (this.cornerSize.y*2));
 		
 		// Middle Right
+		this.sourcePositions		[5].set(this.cornerSize.x + this.middleSize.x, this.cornerSize.y);
+		this.sourceDimensions		[5].set(this.cornerSize.x, this.middleSize.y);
+		this.destinationPositions	[5].set(this.destinationPositions[4].x + this.destinationDimensions[4].x, this.destinationPositions[2].y + this.destinationDimensions[2].y);
+		this.destinationDimensions	[5].set(this.cornerSize.x, this.height - (this.cornerSize.y*2));
 		
 		// Bottom Left
+		this.sourcePositions		[6].set(0, this.sourcePositions[3].y + this.sourceDimensions[3].y);
+		this.sourceDimensions		[6].set(this.cornerSize.x, this.cornerSize.y);
+		this.destinationPositions	[6].set(0, this.destinationPositions[3].y + this.destinationDimensions[3].y);
+		this.destinationDimensions	[6].set(this.cornerSize.x, this.cornerSize.y);
 		
 		// Bottom Middle
+		this.sourcePositions		[7].set(this.cornerSize.x, this.cornerSize.y + this.middleSize.y);
+		this.sourceDimensions		[7].set(this.middleSize.x, this.cornerSize.y);
+		this.destinationPositions	[7].set(this.destinationPositions[6].x + this.destinationDimensions[6].x, this.destinationPositions[4].y + this.destinationDimensions[4].y);
+		this.destinationDimensions	[7].set(this.width - (this.cornerSize.x*2), this.cornerSize.y);
 		
 		// Bottom Right
-		
+		this.sourcePositions		[8].set(this.cornerSize.x + this.middleSize.x, this.cornerSize.y + this.middleSize.y);
+		this.sourceDimensions		[8].set(this.cornerSize.x, this.cornerSize.y);
+		this.destinationPositions	[8].set(this.destinationPositions[4].x + this.destinationDimensions[4].x, this.destinationPositions[4].y + this.destinationDimensions[4].y);
+		this.destinationDimensions	[8].set(this.cornerSize.x, this.cornerSize.y);
 	}
 	
 	this.onLoaded = function()
@@ -76,7 +99,7 @@ NinePatch.prototype.draw = function(x, y)
 	// Optional. The width of the image to use (stretch or reduce the image)	
 	// Optional. The height of the image to use (stretch or reduce the image)
 		
-	for(var i = 0; i < 3; i++)
+	for(var i = 0; i < 9; i++)
 	{
 		context.drawImage(this.image, 
 			this.sourcePositions[i].x,  	 	this.sourcePositions[i].y, 

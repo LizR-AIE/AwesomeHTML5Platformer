@@ -27,6 +27,22 @@ function getDeltaTime()
 	return deltaTime;
 }
 
+Array.prototype.update = function(deltaTime)
+{
+	for(var i = 0; i < this.length; i++)
+	{
+		this[i].update(deltaTime);
+	}
+}
+
+Array.prototype.draw = function()
+{
+	for(var i = 0; i < this.length; i++)
+	{
+		this[i].draw();
+	}
+}
+
 //-------------------- Don't modify anything above here
 
 //--------------------
@@ -39,6 +55,8 @@ var sfxFire;
 var mute = true;
 
 // GLOBAL
+canvas.width 	= window.innerWidth;
+canvas.height 	= window.innerHeight;
 var SCREEN_WIDTH 	= canvas.width;
 var SCREEN_HEIGHT 	= canvas.height;
 
@@ -48,7 +66,7 @@ var STATE_HIGHSCORE = 2;
 var STATE_GAME 		= 3;
 var STATE_OVER 		= 4;
 
-var gameState 		= STATE_SPLASH;
+var gameState 		= STATE_MENU;
 
 var keyboard 		= new Keyboard();
 
@@ -59,13 +77,21 @@ var purple = "#BB54DD";
 var yellow = "yellow";
 var red = "red";
 
+var buttons = [];
+
 // SPLASH
 var splashTimer = 0;
 var splashInterval = 3;
 
 // MENU
-var buttonTest = new Button(UI_GREY);
-buttonTest.normal.calculate();
+buttons.push(new Button(UI_GREY));
+//console.log("SCREEN_WIDTH: " + SCREEN_WIDTH)
+//console.log("SCREEN_WIDTH/2: " + SCREEN_WIDTH/2)
+//console.log("buttons[0].width: " + buttons[0].width);
+//console.log("buttons[0].width/2: " + buttons[0].width/2);
+//console.log("(SCREEN_WIDTH / 2) - (buttons[0].width / 2): " + ((SCREEN_WIDTH / 2) - (buttons[0].width / 2)));
+buttons[0].x = ((SCREEN_WIDTH / 2) - (buttons[0].width / 2));
+buttons[0].y = 100;
 
 // HIGHSCORE
 var HighScore = 0;
@@ -121,9 +147,12 @@ var worldOffsetX = 0;
 // Functions
 //--------------------
 
-context.onload = function()
+window.onload = function()
 {
-	buttonTest.normal.calculate();
+	for(var i = 0; i < buttons.length; i++)
+	{
+		buttons[i].onLoaded();
+	}
 }
 
 function initialize() 
@@ -347,7 +376,7 @@ function MenuDraw()
 	var menuText = "This is a menu";
 	var textMeasure = context.measureText(menuText);
 	context.fillText(menuText, (SCREEN_WIDTH - textMeasure.width)/2, 64);
-	buttonTest.draw(context);
+	buttons.draw();
 }
 
 function HighScoreUpdate(deltaTime)
@@ -363,10 +392,11 @@ function HighScoreDraw()
 function GameUpdate(deltaTime)
 {
 	player.update(deltaTime);
-		
+	bullets.update(deltaTime);
+	enemies.update(deltaTime);
+	
 	for(var i = 0; i < enemies.length; i++)
 	{
-		enemies[i].update(deltaTime);
 		if(player.isDead == false)
 		{
 			if(intersects(	enemies[i].position.x + (enemies[i].offset.x * 0.65),
@@ -386,7 +416,6 @@ function GameUpdate(deltaTime)
 	var hit = false;
 	for(var i = 0; i < bullets.length; i++)
 	{
-		bullets[i].update(deltaTime);
 		if(	bullets[i].position.x - worldOffsetX < 0 || 
 			bullets[i].position.x - worldOffsetX > SCREEN_WIDTH)
 			{
@@ -419,20 +448,13 @@ function GameDraw()
 	drawMap();				
 	player.draw();
 	
-	for(var i = 0; i < enemies.length; i++)
-	{
-		enemies[i].draw();
-	}
-	
-	for(var i = 0; i < bullets.length; i++)
-	{
-		bullets[i].draw();
-	}
+	enemies.draw();
+	bullets.draw();
 	
 	context.fillStyle = "yellow";
 	context.font = kenFont;
 	var scoreText = "Score: " + score;
-	context.fillText(scoreText, SCREEN_WIDTH - 170, 35);
+	context.fillText(scoreText, SCREEN_WIDTH - context.measureText(scoreText).width - 5, 35);
 	
 	for(var i=0; i<lives; i++)
 	{

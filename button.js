@@ -12,8 +12,8 @@ var Button = function(color)
 {
 	this.x = 50;
 	this.y = 50;
-	this.width = 0;
-	this.height = 0;
+	this.width = 250;
+	this.height = 180;
 	
 	this.color = color;	
 	this.state = STATE_NORMAL;
@@ -21,12 +21,17 @@ var Button = function(color)
 	this.normal = new NinePatch("./uipack/PNG/blue_button06.png", 10, 10, 250, 180);
 }
 
-Button.prototype.draw = function(context)
+Button.prototype.draw = function()
 {
 	switch(this.state)
 	{
 		case(STATE_NORMAL):
-		this.normal.draw(context, this.x, this.y);
+		this.normal.draw(this.x, this.y);
 		break;
 	}
+}
+
+Button.prototype.onLoaded = function()
+{
+	this.normal.onLoaded();
 }
